@@ -3,3 +3,42 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    background-color: #4682b4;
+    color: #fff;
+    height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.container {
+    width: 60%;
+    margin: 0 auto;
+    padding: 12.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.625rem;
+}
+
+
+.box {
+    background-color: aqua;
+    width: calc(100% / 5 - 0.9375rem);
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 0.3125rem solid #fff;
+    font-size: 1.875rem;
+    color: black;
+}
+
+.result {
+    width: 100%;
+    padding-top: 50px;
+}
