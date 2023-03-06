@@ -99,19 +99,19 @@ function game() {
 
   let hide = setTimeout(() => {
     hideElements(arrayOfElements, classHide);
-  }, 4000);
+  }, 30000);
 
   let CallarrayOfAskedNums = setTimeout(() => {
     arrayOfAskedNums = [...askNumbers(lengthOfNumbers)];
-  }, 4100);
+  }, 31000);
 
   let callCoincidentArray = setTimeout(() => {
     coincidentNums = [...controlCoincidence(arrayOfAskedNums, randomArray)];
-  }, 4100);
+  }, 31000);
 
   let callDisplayResult = setTimeout(() => {
     displayResult(coincidentNums, element, classResult, container);
-  }, 4100);
+  }, 31000);
 }
 
 
