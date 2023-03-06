@@ -33,6 +33,13 @@ function createRandomArray(length, min, max){
     return randomArray;
 }
 
+function hideElements(arrayOfElements, classHide){
+    const arrayToHide = document.querySelectorAll(arrayOfElements);
+    for(let i = 0; i < arrayToHide.length; i++){
+        arrayToHide[i].classList.add(classHide);
+    }
+}
+
 const container = '.container'
 const classNameNumbers = 'box';
 const arrayOfElements = '.box';
@@ -40,8 +47,13 @@ const minNum = 0;
 const maxNum = 99;
 const lengthOfNumbers = 5;
 const element = 'div';
+const classHide = 'hidden';
 const randomArray = createRandomArray(lengthOfNumbers, minNum, maxNum);
 
 createHTMLElement(element, randomArray.length, container, classNameNumbers);
 fillInnerText(arrayOfElements, randomArray);
+
+let hide = setTimeout(()=>{
+    hideElements(arrayOfElements, classHide);
+}, 4000);
 
