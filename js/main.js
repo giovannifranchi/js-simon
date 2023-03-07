@@ -39,6 +39,21 @@ function hideElements(arrayOfElements, classHide) {
   }
 }
 
+function countDown(seconds, container, element){
+  let count = seconds;
+  const newElement = document.querySelector(element);
+  let interval = setInterval(()=>{
+    if(count >= 0){
+      newElement.innerText = count;
+      count -= 1;
+    }else{
+      const newContainer = document.querySelector(container);
+      newContainer.classList.add('hidden');
+      clearInterval(interval);
+    }
+  }, 1000);
+}
+
 function askNumbers(times) {
   const arrayOfAskedNums = [];
   for (let i = 0; i < times; i++) {
@@ -88,6 +103,9 @@ function game() {
   const maxNum = 99;
   const lengthOfNumbers = 5;
   const element = "div";
+  const timeContainer = '.time-container';
+  const timeElement = '.time';
+  const countDownSecs = 30;
   const classHide = "hidden";
   const randomArray = createRandomArray(lengthOfNumbers, minNum, maxNum);
   let arrayOfAskedNums = [];
@@ -96,24 +114,24 @@ function game() {
   reset(container);
   createHTMLElement(element, randomArray.length, container, classNameNumbers);
   fillInnerText(arrayOfElements, randomArray);
+  countDown(countDownSecs, timeContainer, timeElement);
 
   let hide = setTimeout(() => {
     hideElements(arrayOfElements, classHide);
-  }, 30000);
+  }, 32000);
 
   let CallarrayOfAskedNums = setTimeout(() => {
     arrayOfAskedNums = [...askNumbers(lengthOfNumbers)];
-  }, 31000);
+  }, 33000);
 
   let callCoincidentArray = setTimeout(() => {
     coincidentNums = [...controlCoincidence(arrayOfAskedNums, randomArray)];
-  }, 31000);
+  }, 33000);
 
   let callDisplayResult = setTimeout(() => {
     displayResult(coincidentNums, element, classResult, container);
-  }, 31000);
+  }, 33000);
 }
-
 
 // PROGRAM
 
