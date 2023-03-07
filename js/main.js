@@ -94,7 +94,14 @@ function reset(container) {
   newContainer.innerHTML = "";
 }
 
-function game() {
+function removeClass(className, element, condition){
+  const newElement = document.querySelector(element);
+  if(condition){
+    newElement.classList.remove(className);
+  }
+}
+
+function game(hasClicked) {
   const container = ".container";
   const classNameNumbers = "box";
   const arrayOfElements = ".box";
@@ -105,38 +112,48 @@ function game() {
   const element = "div";
   const timeContainer = '.time-container';
   const timeElement = '.time';
-  const countDownSecs = 30;
+  const countDownSecs = 10;
   const classHide = "hidden";
   const randomArray = createRandomArray(lengthOfNumbers, minNum, maxNum);
   let arrayOfAskedNums = [];
   let coincidentNums = [];
+  let timeInner = document.querySelector('.time');
+  timeInner.innerText = countDownSecs;
 
   reset(container);
   createHTMLElement(element, randomArray.length, container, classNameNumbers);
   fillInnerText(arrayOfElements, randomArray);
+  removeClass(classHide,timeContainer, hasClicked)
   countDown(countDownSecs, timeContainer, timeElement);
+  // hasClicked = false;
+
 
   let hide = setTimeout(() => {
     hideElements(arrayOfElements, classHide);
-  }, 32000);
+  }, (countDownSecs + 2) * 1000);
 
   let CallarrayOfAskedNums = setTimeout(() => {
     arrayOfAskedNums = [...askNumbers(lengthOfNumbers)];
-  }, 33000);
+  }, (countDownSecs + 3) * 1000);
 
   let callCoincidentArray = setTimeout(() => {
     coincidentNums = [...controlCoincidence(arrayOfAskedNums, randomArray)];
-  }, 33000);
+  }, (countDownSecs + 3) * 1000);
 
   let callDisplayResult = setTimeout(() => {
     displayResult(coincidentNums, element, classResult, container);
-  }, 33000);
+  }, (countDownSecs + 3) * 1000);
 }
 
 // PROGRAM
 
 const playBtn = document.querySelector('.btn');
+let countDownSecs = 10;
+let hasClicked = false;
+let timeInner = document.querySelector('.time');
+timeInner.innerText = countDownSecs;
 
 playBtn.addEventListener('click', ()=>{
-    game();
+  game(hasClicked);
+  hasClicked = true;
 });
